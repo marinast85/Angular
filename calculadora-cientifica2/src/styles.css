@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    background: #000 !important;
+    background: url(https://c.wallhere.com/photos/c3/1d/Ubuntu_Linux_Software_Free_Software_GNU_leopard_animal-62319.jpg!d) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef !important;
+    opacity: 0.7 !important;
+    height: 170px !important;
+    font-size: 50px !important;
+}
+.bg-calculadora {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.col-md-12 {
+    text-align: left !important;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 8px 40px !important;
+    border-radius: 0 !important;
+    margin-bottom: 3px !important;
+    width: 100% !important;
+    margin: 2px 0 !important; 
+    text-transform: uppercase;
+    letter-spacing: 1px !important;
+    font-size: 20px !important;
+}
+
+button#btnDivisao, .btn-warning {
+    width: 100% !important;
+    border-radius: 0 !important;
+    margin-bottom: 3px !important;
+    padding: 8px 5px !important;
+}
+
+#btngeral {
+    background: #6C7176 !important;
+    width: 100% !important;
+    color: #FFF !important;
+    font-size: 20px !important;
+    margin-bottom: 2px !important;
+    border-radius: 0 !important;
+    transition: .2s !important;
+}
+#btngeral:hover {
+    background: #4B4B4B !important;
+}
+
+.btn-success {
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 9px 10px !important;
+}

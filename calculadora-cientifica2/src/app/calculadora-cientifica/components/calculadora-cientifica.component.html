@@ -1,0 +1,203 @@
+<div class="container-fluid">
+  <form>
+    <div class="row p-5">
+      <div class="col-md-4 m-auto">
+        <div 
+          class="text-center bg-calculadora img-rounded">
+          <div class="row">
+            <div class="col-md-12">
+              <input 
+                type="text" 
+                [value]="display"
+                class="form-control text-right kz-input-text"
+                id="display" 
+                name="display" 
+                readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button 
+                type="button"
+                (click)="limpar()"
+                class="btn btn-danger">Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                (click)="definirOperacao('x²')"
+                class="btn btn-warning" 
+                id="btnDivisao">x²
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                (click)="definirOperacao('x³')"
+                class="btn btn-warning" 
+                id="btnDivisao">x³
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                (click)="adicionaNumero('3.14')"
+                class="btn btn-default" 
+                id="btngeral">π
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                (click)="definirOperacao('√')"
+                class="btn btn-warning" 
+                id="btnDivisao">√ 
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('7')"
+                id="btngeral">7
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('8')"
+                id="btngeral">8
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('9')"
+                id="btngeral">9
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-warning" 
+                (click)="definirOperacao('/')"
+                id="btnDivisao">/
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('4')"
+                id="btngeral">4
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('5')"
+                id="btngeral">5
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('6')"
+                id="btngeral">6
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-warning"  
+                (click)="definirOperacao('*')"
+                id="btnMIltiplicacao">*
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('1')"
+                id="btngeral">1
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('2')"
+                id="btngeral">2
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('3')"
+                id="btngeral">3
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-warning" 
+                (click)="definirOperacao('-')"
+                id="btnSubtracao">-
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('0')"
+                id="btngeral">0
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-default" 
+                (click)="adicionaNumero('.')"
+                id="btngeral">.
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-success" 
+                (click)="calcular()"
+                id="btnCalcular">=
+              </button>
+            </div>
+            <div class="col-md-3">
+              <button 
+                type="button" 
+                class="btn btn-warning" 
+                (click)="definirOperacao('+')"
+                id="btnSoma">+
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
