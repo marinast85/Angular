@@ -1,0 +1,230 @@
+# PROJETO DASHBOARD
+
+1. Criar projeto: ng new dashboard
+
+2.  Entrar na pasta dashboard en
+
+3. n ng serve
+
+4. Em tsconfig.json, alterar o strict para <i>false</i>
+
+5. Em app.component.spec.ts: apagar os dois ultimos testes
+
+6. Apagar o conteudo de app.component.html e fazer  a interpolação <h1> {{title}} </h1>
+
+7. Em app.component.ts, alterar o title para o nome desejado
+
+8. Em outro prompt, entrar na pasta do projeto e escrever: <b> npm install rxjs-compat --save </b>
+
+9.  instalar módulo: <b>ng g module dashboard</b>
+
+10.  Criar o arquivo index.ts na pasta raiz e exportar:  <b>export * from './dashboard.module' </b>
+
+11. Em app.module.ts:  em imports acrescentar <b> DashboardModule </b e conferir se a importação foi feita na pasta './dashboard'
+
+12. No prompt: <b> ng g component dashboard/dashboard</b>
+
+13. Alterar o nome da pasta dashboard recem criada para component
+
+14. Criar um index na pasta component e exportar <b> export * from './dashboard.component'</b>
+
+15.  no index da pasta raiz exportar <b>export * from './component' </b>
+
+16.  exportar o componente em dashboard.module.ts: acrescentar após imports => exports: [ DashBoardComponent]
+
+17. Em app.component.html verificar o nome do seletor que está em dashboard.component.ts e colocar a tag abaixo do h1 
+
+18. No prompt: <b>ng g service dashboard/service/dados</b> (não tenho certeza)
+
+19. criar index na pasta service e exportar: export * from './dados.service'
+
+20. No index da pasta raiz, exportar a pasta services
+
+21. em dashboard.module.ts, após exports, incluir providers e acrescentar: <b>dadosService</b> e conferir se a importação foi feita  PAREI AQUI
+
+22.  Verificar se na página aparece "works"
+
+23. Em dados.service.ts: remover o que esta dentro do Injectable e importar o Observable do rxjs <b>import { Observable } from 'rxjs';</b>
+
+24. Criar um array de dados abaixo do export
+
+    readonly dados = [
+
+    ['Janeiro', 33],
+
+    ['Fevereiro', 68],
+
+    ['Março', 45],
+
+    ['Abril', 52],
+
+    ['Maio', 58],
+
+    ['Junho', 76]
+
+    ];
+
+25. Abaixo do constructor incluir:
+
+    obterDados(): Observable<any>{
+
+    return new Observable(*observable* =>{
+
+       *observable*.next(this.dados); //notifica quando um novo dado está disponivel para ser utilizado
+
+       *observable*.complete(); //impede que o observable fique atuando sem necessidade pois a ação já foi finalizada (não é obrigatorio)
+
+    }
+
+26. Acesso da API: https://developers.google.com/chart e ir em guides/quickstart
+
+27. Copiar o script para index.html
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+28. Em dashboard.component.html: apagar o conteudo e incluir:
+
+    div *6 cada uma com um id como declarado abaixo:
+
+    <div id="pie_chart"></div>
+    <div id="3d_pie_chart"></div>
+    <div id="donut_chart"></div>
+    <div id="bar_chart"></div>
+    <div id="line_chart"></div>
+    <div id="column_chart"></div>
+
+29. Em dashboard.component.css:
+
+    div{
+
+      float: left;
+
+    } 
+
+30. Em dashboard.component.ts:
+
+    incluir a variavel global após os imports: <b>declare var google: any;</b>
+
+    
+
+    import { Component, OnInit } from '@angular/core';
+    import { DadosService } from './dados.service';
+
+    // Tornando a variavel global
+    declare var google: any;
+
+    @Component({
+      selector: 'app-dashboard',
+      templateUrl: './dashboard.component.html',
+      styleUrls: ['./dashboard.component.css']
+    })
+    export class DashboardComponent implements OnInit {
+
+      private dados: any;
+
+      constructor(private dadosService: DadosService) { }
+
+      ngOnInit(): void {
+        this.dadosService.obterDados().subscribe(
+          dados => {
+            this.dados = dados;
+            this.init();
+          }
+        )
+      }
+
+      init(): void {
+        if(typeof(google) !== "undefined"){
+          google.charts.load('current', {'packages': ['corechart']});
+          setTimeout(()=>{
+            google.charts.setOnLoadCallback(this.exibirGraficos());
+          }, 1000);
+        }
+      }
+
+      exibirGraficos(): void {
+        this.exibirPieChart();
+        this.exibir3dPieChart();
+        this.exibirDonutChart();
+        this.exibirBarChart();
+        this.exibirLineChart();
+        this.exibirColumnChart();
+      }
+
+      // --------------GRAFICOS--------------
+
+      exibirPieChart():void{
+        const el = document.getElementById('pie_chart');
+        const chart = new google.visualization.PieChart(el);
+
+        chart.draw(this.obterDataTable(), this.obterOpcoes());
+      }
+
+      exibir3dPieChart():void{
+        const el = document.getElementById('3d_pie_chart');
+        const chart = new google.visualization.PieChart(el);
+
+        const opcoes = this.obterOpcoes();
+        
+        opcoes['is3D'] = true;
+        
+        chart.draw(this.obterDataTable(), opcoes);
+      }
+
+      exibirDonutChart():void{
+        const el = document.getElementById('donut_chart');
+        const chart = new google.visualization.PieChart(el);
+
+        const opcoes = this.obterOpcoes();
+        
+        opcoes['pieHole'] = 0.4;
+        
+        chart.draw(this.obterDataTable(), opcoes);
+      }
+
+      exibirBarChart():void{
+        const el = document.getElementById('bar_chart');
+        const chart = new google.visualization.BarChart(el);
+
+        chart.draw(this.obterDataTable(), this.obterOpcoes());
+      }
+
+      exibirLineChart():void{
+        const el = document.getElementById('line_chart');
+        const chart = new google.visualization.LineChart(el);
+
+        chart.draw(this.obterDataTable(), this.obterOpcoes());
+      }
+
+      exibirColumnChart():void{
+        const el = document.getElementById('column_chart');
+        const chart = new google.visualization.ColumnChart(el);
+
+        chart.draw(this.obterDataTable(), this.obterOpcoes());
+      }
+
+      // --------------FIM GRAFICOS--------------
+
+      obterDataTable(): any{
+        const data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Mês');
+        data.addColumn('number', 'Quantidade');
+        data.addRows(this.dados);
+        
+        return data
+      }
+
+      obterOpcoes(): any {
+        return {
+          'title': "Quantidade de cadastro primeiro semestre",
+          'width': 400,
+          'height': 300
+        };
+      }
+    }
+
+
+
+
+
