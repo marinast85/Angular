@@ -1,0 +1,44 @@
+<main>
+
+  <nav class="navbar navbar-expand-lg navbar-light navegacao" style="background-color: royalblue;">
+    <a class="navbar-brand" [routerLink]="['/inicio']"><img src="../assets/imagens/img-angular.png" alt="logo-angular"
+        style="width: 100px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse header container justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/principal']">Home </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/sobre']">Sobre </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/instalacao']">Instalação</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/informacao']">Mais Informações</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  <footer class="d-flex justify-content-center page-footer font-small blue pt-5" style="background-color: rgba(216, 216, 216, 0.398);">
+    <!-- Copyright -->
+      <div class="footer-copyright text-center mr-3">
+        © 2021 Copyright: Marina Toledo
+      </div>
+
+      <div class="d-flex">
+        <a href="https://www.linkedin.com/in/marina-silveira-toledo-43289235/"> <img
+            src="../assets/imagens/linkedin.png" alt="" style="width: 2vw;" class="mr-2"> </a>
+        <a href="https://github.com/marinast85"> <img src="../assets/imagens/github.png" alt="" style="width: 2vw;"> </a>
+      </div>
+
+  </footer>
+  
+</main>
